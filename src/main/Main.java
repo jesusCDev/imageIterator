@@ -40,7 +40,6 @@ public class Main {
         guiControls.startGui(delImagesAfterMove, picturesSources, paths, picturesSources.size());
     //PRESENTS TEH GUI WITH BUTTONS AND THE IMAGES
         
-        System.out.println("Done");
 
     }
 }
