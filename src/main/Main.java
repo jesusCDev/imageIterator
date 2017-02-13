@@ -39,6 +39,8 @@ public class Main {
         GuiKeyListener guiControls = new GuiKeyListener();
         guiControls.startGui(delImagesAfterMove, picturesSources, paths, picturesSources.size());
     //PRESENTS TEH GUI WITH BUTTONS AND THE IMAGES
+        
+        System.out.println("Done");
 
     }
 }
