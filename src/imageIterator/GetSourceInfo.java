@@ -6,6 +6,8 @@
 package imageIterator;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,6 +59,9 @@ public class GetSourceInfo {
                 }
             }
         }
+
+        System.out.println(pathNames[0]);
+        System.out.println(pathNames[1]);
         
         //goes through the keys that were'nt picked and puts dele in them to be used as a dele hotkey
         for(int i = (arrowGoingToBeUsed + 1); i < 5; i++){
@@ -73,7 +78,8 @@ public class GetSourceInfo {
      * @return
      */
     private String fixPath(String path){
-        
+
+
         ArrayList<Integer> backlashPoints = new ArrayList<>();
         
         //finds destination of the slash 
@@ -104,7 +110,6 @@ public class GetSourceInfo {
         if(fixedPathTwo.substring((fixedPathTwo.length() - 1)) != "\\"){
         	fixedPathTwo.append("\\\\");
         }
-        
         return fixedPathTwo.toString();
     }
     
