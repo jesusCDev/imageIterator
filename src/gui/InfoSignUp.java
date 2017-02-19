@@ -18,16 +18,30 @@ public class InfoSignUp {
 	private JTextField pictureDestinationText;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private String numberOfMacroKeys;
+	
+	JLabel lblUpArrowDestination;
+	JLabel lblDownArrowDestination;
+	JLabel lblLeftArrowDestination;
+	JLabel lblRightArrowDestination;
+	
 	private JTextField upArrowText;
 	private JTextField downArrowText;
 	private JTextField leftArrowText;
 	private JTextField rightArrowText;
 	
 
-	boolean upClick = true;
+	boolean upClick = false;
 	boolean downClick = false;
 	boolean leftClick = false;
 	boolean rightClick = false;
+
+	String originalLeft = null;
+	String originalUp = null;
+	String originalDown = null;
+
+	boolean upClicked = false;
+	boolean downClicked = false;
+	boolean leftClicked = false;
 
 	/**
 	 * Launch the application.
@@ -45,97 +59,154 @@ public class InfoSignUp {
 		});
 	}
 	
+	private void passText(String[] paths){
+		System.out.println(paths[0]);
+		System.out.println(paths[1]);
+		System.out.println(paths[2]);
+		System.out.println(paths[3]);
+		System.out.println(paths[4]);
+	}
+	
 	class RadioListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
 			JRadioButton btn = (JRadioButton)arg0.getSource();
-			
 			String numberOfMacroKeys = btn.getText();
+			
 			int numberOfMacroKeysInt = 1;
 			
-			if(numberOfMacroKeys == "Two"){
+			if(numberOfMacroKeys.equals("Two")){
+				
 				numberOfMacroKeysInt = 2;
-			}else if(numberOfMacroKeys == "Three"){
+				
+			}else if(numberOfMacroKeys.equals("Three")){
+				
 				numberOfMacroKeysInt = 3;
 				
-			}else if(numberOfMacroKeys == "Four"){
+			}else if(numberOfMacroKeys.equals("Four")){
 				numberOfMacroKeysInt = 4;
 			}
 			
-			JLabel lblUpArrowDestination = new JLabel("Up Arrow Destination");
+			lblUpArrowDestination = new JLabel("Up Arrow Destination");
 			lblUpArrowDestination.setBounds(10, 134, 116, 14);
 			frame.getContentPane().add(lblUpArrowDestination);
 			
+			if(upClicked == true){
+				originalUp = upArrowText.getText();
+				System.out.println(originalUp);
+			}
+			
 			upArrowText = new JTextField();
 			upArrowText.setBounds(198, 131, 226, 20);
-			frame.getContentPane().add(upArrowText);
 			upArrowText.setColumns(10);
+			frame.getContentPane().add(upArrowText);
 			
-			if(downClick == true){
-				frame.getContentPane().remove(downArrowText);
-				downClick = false;
-			}
-			if(leftClick == true){
-				frame.getContentPane().remove(leftArrowText);
-				leftClick = false;
-			}
-			if(rightClick == true){
-				frame.getContentPane().remove(rightArrowText);
-				rightClick = false;
-			}
-			
-			if(numberOfMacroKeysInt > 1){
+			upClicked = true;
+			upClick = true;
+			if(numberOfMacroKeysInt == 1){
+				System.out.println("One");
 
-				JLabel lblDownArrowDestination = new JLabel("Down Arrow Destination");
-				lblDownArrowDestination.setBounds(10, 159, 116, 14);
-				frame.getContentPane().add(lblDownArrowDestination);
-
-				downArrowText = new JTextField();
-				downArrowText.setBounds(198, 156, 226, 20);
-				frame.getContentPane().add(downArrowText);
-				downArrowText.setColumns(10);
-				
-				downClick = true;
-				
+				System.out.println(downClick);
+				System.out.println(leftClick);
+				System.out.println(rightClick);
+				if(downClick == true){
+					frame.getContentPane().remove(lblDownArrowDestination);
+					frame.getContentPane().remove(downArrowText);
+					downArrowText.setText("");
+					downClick = false;
+				}
 				if(leftClick == true){
+					frame.getContentPane().remove(lblLeftArrowDestination);
 					frame.getContentPane().remove(leftArrowText);
+					leftArrowText.setText("");
 					leftClick = false;
 				}
 				if(rightClick == true){
+					frame.getContentPane().remove(lblRightArrowDestination);
 					frame.getContentPane().remove(rightArrowText);
+					rightArrowText.setText("");
 					rightClick = false;
+				}
+			}
+			
+			if(numberOfMacroKeysInt > 1){
+				lblDownArrowDestination = new JLabel("Down Arrow Destination");
+				lblDownArrowDestination.setBounds(10, 159, 116, 14);
+				frame.getContentPane().add(lblDownArrowDestination);
+
+				if(downClicked == true){
+					originalDown = downArrowText.getText();
+					System.out.println(originalDown);
+				}
+
+				downArrowText = new JTextField();
+				downArrowText.setBounds(198, 156, 226, 20);
+				downArrowText.setColumns(10);
+				frame.getContentPane().add(downArrowText);
+				
+				downClick = true;
+				downClicked = true;
+
+				if(numberOfMacroKeysInt == 2){
+					System.out.println(leftClick);
+					System.out.println(rightClick);
+					System.out.println("Two");
+					if(leftClick == true){
+						frame.getContentPane().remove(lblLeftArrowDestination);
+						frame.getContentPane().remove(leftArrowText);
+						leftArrowText.setText("");
+						leftClick = false;
+					}
+					if(rightClick == true){
+						frame.getContentPane().remove(lblRightArrowDestination);
+						frame.getContentPane().remove(rightArrowText);
+						rightArrowText.setText("");
+						rightClick = false;
+					}
+
 				}
 				
 				if (numberOfMacroKeysInt > 2){
-					
-					JLabel lblLeftArrowDestination = new JLabel("Left Arrow Destination");
+					lblLeftArrowDestination = new JLabel("Left Arrow Destination");
 					lblLeftArrowDestination.setBounds(10, 184, 116, 14);
 					frame.getContentPane().add(lblLeftArrowDestination);
+
+					if(leftClicked == true){
+						originalLeft = leftArrowText.getText();
+						System.out.println(originalLeft);
+					}
 					
 					leftArrowText = new JTextField();
 					leftArrowText.setBounds(198, 181, 226, 20);
-					frame.getContentPane().add(leftArrowText);
 					leftArrowText.setColumns(10);
+					frame.getContentPane().add(leftArrowText);
 					
 					leftClick = true;
-					
-					if(rightClick == true){
-						frame.getContentPane().remove(rightArrowText);
-						rightClick = false;
+					leftClicked = true;
+
+					if(numberOfMacroKeysInt == 3){
+						System.out.println(rightClick);
+						System.out.println("Three");
+						if(rightClick == true){
+							frame.getContentPane().remove(lblRightArrowDestination);
+							frame.getContentPane().remove(rightArrowText);
+							rightArrowText.setText("");
+							rightClick = false;
+						}
 					}
 					
 					if (numberOfMacroKeysInt > 3){
 						
-						JLabel lblRightArrowDestination = new JLabel("Right Arrow Destination");
+						lblRightArrowDestination = new JLabel("Right Arrow Destination");
 						lblRightArrowDestination.setBounds(10, 209, 116, 14);
 						frame.getContentPane().add(lblRightArrowDestination);
 						
 						rightArrowText = new JTextField();
 						rightArrowText.setBounds(198, 206, 226, 20);
-						frame.getContentPane().add(rightArrowText);
 						rightArrowText.setColumns(10);
+						frame.getContentPane().add(rightArrowText);
 						
 						rightClick = true;
 						
@@ -145,6 +216,21 @@ public class InfoSignUp {
 
 			frame.revalidate();
 			frame.repaint();
+
+			if(upClicked == true){
+				System.out.println("Pass one");
+				upArrowText.setText(originalUp);
+				
+				if(downClicked == true){
+					System.out.println("Pass Two");
+					downArrowText.setText(originalDown);
+
+					if(leftClicked == true){
+						System.out.println("Pass Three");
+						leftArrowText.setText(originalLeft);
+					}
+				}
+			}
 			
 		}
 		
@@ -162,7 +248,7 @@ public class InfoSignUp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 345);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -204,48 +290,58 @@ public class InfoSignUp {
 		submitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
-				
-
-				System.out.println(pictureDestinationText.getText().toString());
-				System.out.println(upArrowText.getText().toString());
-				
-				System.out.println(pictureDestinationText.getText());
-				System.out.println(upArrowText.getText());
-				
-				
-				
-				
+				System.out.println("Pressed");
 				
 				String[] paths = new String[5];
 				
-				if(!pictureDestinationText.getText().equals("") && !upArrowText.getText().equals("")){
+				if((pictureDestinationText.getText().equals("")) == false && (upArrowText.getText().equals("") == false)){
+					
+					System.out.println("Box One");
 					
 					paths[0] = pictureDestinationText.getText();
 					paths[1] = upArrowText.getText();
 					
 					if(downClick == true || rightClick == true || leftClick == true){
 						
-						if(downClick == true && !downArrowText.getText().equals("")){
-							paths[2] = downArrowText.getText();
-						}
-
-						if(leftClick == true && !leftArrowText.getText().equals("")){
-							paths[3] = rightArrowText.getText();
-						}
+						System.out.println("True and False");
 						
-						if(rightClick == true && !rightArrowText.getText().equals("")){
-							paths[4] = leftArrowText.getText();
+						if(downClick == true && !downArrowText.getText().equals("")){
+							
+							System.out.println("Box Two");
+							paths[2] = downArrowText.getText();
+
+							if(leftClick == true && !leftArrowText.getText().equals("")){
+								
+								System.out.println("Box Three");
+								paths[3] = rightArrowText.getText();
+								
+								if(rightClick == true && !rightArrowText.getText().equals("")){
+									
+									System.out.println("Box Four");
+									paths[4] = leftArrowText.getText();
+									passText(paths);
+									
+								}else{
+									
+									passText(paths);
+									
+								}
+							}else{
+								
+								passText(paths);
+								
+							}
 						}
 					}else{
-
+						
+						passText(paths);
 						
 					}
 				}
-				
+				System.out.println("\n" + "After Pressed");
 			}
 		});
-		submitBtn.setBounds(10, 227, 414, 23);
+		submitBtn.setBounds(10, 272, 414, 23);
 		frame.getContentPane().add(submitBtn);
 		
 		RadioListener listener = new RadioListener();
