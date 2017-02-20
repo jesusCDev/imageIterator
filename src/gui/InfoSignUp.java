@@ -89,19 +89,11 @@ public class InfoSignUp {
 				numberOfMacroKeysInt = 4;
 			}
 			
-			lblUpArrowDestination = new JLabel("Up Arrow Destination");
-			lblUpArrowDestination.setBounds(10, 134, 116, 14);
-			frame.getContentPane().add(lblUpArrowDestination);
-			
 			if(upClicked == true){
 				originalUp = upArrowText.getText();
 				System.out.println(originalUp);
 			}
 			
-			upArrowText = new JTextField();
-			upArrowText.setBounds(198, 131, 226, 20);
-			upArrowText.setColumns(10);
-			frame.getContentPane().add(upArrowText);
 			
 			upClicked = true;
 			upClick = true;
@@ -132,19 +124,11 @@ public class InfoSignUp {
 			}
 			
 			if(numberOfMacroKeysInt > 1){
-				lblDownArrowDestination = new JLabel("Down Arrow Destination");
-				lblDownArrowDestination.setBounds(10, 159, 116, 14);
-				frame.getContentPane().add(lblDownArrowDestination);
 
 				if(downClicked == true){
 					originalDown = downArrowText.getText();
 					System.out.println(originalDown);
 				}
-
-				downArrowText = new JTextField();
-				downArrowText.setBounds(198, 156, 226, 20);
-				downArrowText.setColumns(10);
-				frame.getContentPane().add(downArrowText);
 				
 				downClick = true;
 				downClicked = true;
@@ -169,19 +153,16 @@ public class InfoSignUp {
 				}
 				
 				if (numberOfMacroKeysInt > 2){
-					lblLeftArrowDestination = new JLabel("Left Arrow Destination");
-					lblLeftArrowDestination.setBounds(10, 184, 116, 14);
-					frame.getContentPane().add(lblLeftArrowDestination);
 
 					if(leftClicked == true){
 						originalLeft = leftArrowText.getText();
 						System.out.println(originalLeft);
 					}
 					
-					leftArrowText = new JTextField();
-					leftArrowText.setBounds(198, 181, 226, 20);
-					leftArrowText.setColumns(10);
-					frame.getContentPane().add(leftArrowText);
+					
+					frame.getContentPane().remove(lblRightArrowDestination);
+					frame.getContentPane().remove(rightArrowText);
+					rightArrowText.setText("");
 					
 					leftClick = true;
 					leftClicked = true;
@@ -190,23 +171,12 @@ public class InfoSignUp {
 						System.out.println(rightClick);
 						System.out.println("Three");
 						if(rightClick == true){
-							frame.getContentPane().remove(lblRightArrowDestination);
-							frame.getContentPane().remove(rightArrowText);
-							rightArrowText.setText("");
 							rightClick = false;
 						}
 					}
 					
 					if (numberOfMacroKeysInt > 3){
 						
-						lblRightArrowDestination = new JLabel("Right Arrow Destination");
-						lblRightArrowDestination.setBounds(10, 209, 116, 14);
-						frame.getContentPane().add(lblRightArrowDestination);
-						
-						rightArrowText = new JTextField();
-						rightArrowText.setBounds(198, 206, 226, 20);
-						rightArrowText.setColumns(10);
-						frame.getContentPane().add(rightArrowText);
 						
 						rightClick = true;
 						
@@ -349,5 +319,41 @@ public class InfoSignUp {
 		rdbtnTwo.addActionListener(listener);
 		rdbtnThree.addActionListener(listener);
 		rdbtnFour.addActionListener(listener);
+		
+		lblRightArrowDestination = new JLabel("Right Arrow Destination");
+		lblRightArrowDestination.setBounds(10, 209, 136, 14);
+		frame.getContentPane().add(lblRightArrowDestination);
+		
+		rightArrowText = new JTextField();
+		rightArrowText.setBounds(198, 206, 226, 20);
+		rightArrowText.setColumns(10);
+		frame.getContentPane().add(rightArrowText);
+
+		lblUpArrowDestination = new JLabel("Up Arrow Destination");
+		lblUpArrowDestination.setBounds(10, 134, 136, 14);
+		frame.getContentPane().add(lblUpArrowDestination);
+		
+		upArrowText = new JTextField();
+		upArrowText.setBounds(198, 131, 226, 20);
+		upArrowText.setColumns(10);
+		frame.getContentPane().add(upArrowText);
+
+		lblDownArrowDestination = new JLabel("Down Arrow Destination");
+		lblDownArrowDestination.setBounds(10, 159, 136, 14);
+		frame.getContentPane().add(lblDownArrowDestination);
+		
+		downArrowText = new JTextField();
+		downArrowText.setBounds(198, 156, 226, 20);
+		downArrowText.setColumns(10);
+		frame.getContentPane().add(downArrowText);
+		
+		lblLeftArrowDestination = new JLabel("Left Arrow Destination");
+		lblLeftArrowDestination.setBounds(10, 184, 136, 14);
+		frame.getContentPane().add(lblLeftArrowDestination);
+		
+		leftArrowText = new JTextField();
+		leftArrowText.setBounds(198, 181, 226, 20);
+		leftArrowText.setColumns(10);
+		frame.getContentPane().add(leftArrowText);
 	}
 }
