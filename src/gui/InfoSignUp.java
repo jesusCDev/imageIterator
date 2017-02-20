@@ -217,6 +217,7 @@ public class InfoSignUp {
 		submitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<String> paths = new ArrayList<String>();
+				paths.add(pictureDestinationText.getText());
 				if(upClick == true){
 					paths.add(upArrowText.getText());
 					if(downClick == true){
