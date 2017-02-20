@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 public class InfoSignUp {
 
@@ -30,7 +31,7 @@ public class InfoSignUp {
 	private JTextField rightArrowText;
 	
 
-	boolean upClick = false;
+	boolean upClick = true;
 	boolean downClick = false;
 	boolean leftClick = false;
 	boolean rightClick = false;
@@ -75,18 +76,26 @@ public class InfoSignUp {
 			JRadioButton btn = (JRadioButton)arg0.getSource();
 			String numberOfMacroKeys = btn.getText();
 			
-			int numberOfMacroKeysInt = 1;
-			
-			if(numberOfMacroKeys.equals("Two")){
-				
-				numberOfMacroKeysInt = 2;
-				
+			if(numberOfMacroKeys.equals("One")){
+				upClick = true;
+				downClick = false;
+				leftClick = false;
+				rightClick = false;
+			}else if(numberOfMacroKeys.equals("Two")){
+				upClick = true;
+				downClick = true;
+				leftClick = false;
+				rightClick = false;
 			}else if(numberOfMacroKeys.equals("Three")){
-				
-				numberOfMacroKeysInt = 3;
-				
+				upClick = true;
+				downClick = true;
+				leftClick = true;
+				rightClick = false;
 			}else if(numberOfMacroKeys.equals("Four")){
-				numberOfMacroKeysInt = 4;
+				upClick = true;
+				downClick = true;
+				leftClick = true;
+				rightClick = true;
 			}
 			
 		}
@@ -142,65 +151,6 @@ public class InfoSignUp {
 		rdbtnThree.setBounds(309, 10, 109, 23);
 		frame.getContentPane().add(rdbtnThree);
 		
-		JButton submitBtn = new JButton("Submit");
-
-		submitBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				System.out.println("Pressed");
-				
-				String[] paths = new String[5];
-				
-				if((pictureDestinationText.getText().equals("")) == false && (upArrowText.getText().equals("") == false)){
-					
-					System.out.println("Box One");
-					
-					paths[0] = pictureDestinationText.getText();
-					paths[1] = upArrowText.getText();
-					
-					if(downClick == true || rightClick == true || leftClick == true){
-						
-						System.out.println("True and False");
-						
-						if(downClick == true && !downArrowText.getText().equals("")){
-							
-							System.out.println("Box Two");
-							paths[2] = downArrowText.getText();
-
-							if(leftClick == true && !leftArrowText.getText().equals("")){
-								
-								System.out.println("Box Three");
-								paths[3] = rightArrowText.getText();
-								
-								if(rightClick == true && !rightArrowText.getText().equals("")){
-									
-									System.out.println("Box Four");
-									paths[4] = leftArrowText.getText();
-									passText(paths);
-									
-								}else{
-									
-									passText(paths);
-									
-								}
-							}else{
-								
-								passText(paths);
-								
-							}
-						}
-					}else{
-						
-						passText(paths);
-						
-					}
-				}
-				System.out.println("\n" + "After Pressed");
-			}
-		});
-		submitBtn.setBounds(10, 272, 414, 23);
-		frame.getContentPane().add(submitBtn);
-		
 		RadioListener listener = new RadioListener();
 		rdbtnOne.addActionListener(listener);
 		rdbtnTwo.addActionListener(listener);
@@ -242,5 +192,46 @@ public class InfoSignUp {
 		leftArrowText.setBounds(198, 181, 226, 20);
 		leftArrowText.setColumns(10);
 		frame.getContentPane().add(leftArrowText);
+		
+		JButton submitBtn = new JButton("Submit");
+
+		submitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<String> paths = new ArrayList<String>();
+				if(upClick == true){
+					paths.add(upArrowText.getText());
+					if(downClick == true){
+						paths.add(downArrowText.getText());
+						if(leftClick == true){
+							paths.add(leftArrowText.getText());
+							if(rightClick == true){
+								paths.add(rightArrowText.getText());
+							}else{
+								paths.add("del");
+							}
+						}else{
+							paths.add("del");
+							paths.add("del");
+						}
+					}else{
+						paths.add("del");
+						paths.add("del");
+						paths.add("del");
+					}
+				}
+				FixPaths pathsFixing = new FixPaths(paths);
+				pathsFixing.changeToPaths();
+			}
+		});
+		submitBtn.setBounds(10, 272, 414, 23);
+		frame.getContentPane().add(submitBtn);
+		
+		JLabel lblDeleteImagesAfter = new JLabel("Delete Images After Moving");
+		lblDeleteImagesAfter.setBounds(10, 247, 163, 14);
+		frame.getContentPane().add(lblDeleteImagesAfter);
+		
+		JCheckBox chckbxYes = new JCheckBox("Yes");
+		chckbxYes.setBounds(198, 242, 97, 23);
+		frame.getContentPane().add(chckbxYes);
 	}
 }
