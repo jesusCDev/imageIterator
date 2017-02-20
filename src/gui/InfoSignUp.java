@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import guiResources.GuiKeyListener;
+import imageIterator.GetSourceInfo;
+
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -30,7 +34,8 @@ public class InfoSignUp {
 	private JTextField leftArrowText;
 	private JTextField rightArrowText;
 	
-
+	String yesOrNo;
+	
 	boolean upClick = true;
 	boolean downClick = false;
 	boolean leftClick = false;
@@ -193,6 +198,20 @@ public class InfoSignUp {
 		leftArrowText.setColumns(10);
 		frame.getContentPane().add(leftArrowText);
 		
+		JLabel lblDeleteImagesAfter = new JLabel("Delete Images After Moving");
+		lblDeleteImagesAfter.setBounds(10, 247, 163, 14);
+		frame.getContentPane().add(lblDeleteImagesAfter);
+		
+		JCheckBox chckbxYes = new JCheckBox("Yes");
+		chckbxYes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				yesOrNo = (chckbxYes.isSelected()) ? "Y" : "N";
+			}
+		});
+		chckbxYes.setBounds(198, 242, 97, 23);
+		frame.getContentPane().add(chckbxYes);
+		
+
 		JButton submitBtn = new JButton("Submit");
 
 		submitBtn.addActionListener(new ActionListener() {
@@ -219,19 +238,13 @@ public class InfoSignUp {
 						paths.add("del");
 					}
 				}
+				
 				FixPaths pathsFixing = new FixPaths(paths);
 				pathsFixing.changeToPaths();
+				pathsFixing.createGui(yesOrNo);
 			}
 		});
 		submitBtn.setBounds(10, 272, 414, 23);
 		frame.getContentPane().add(submitBtn);
-		
-		JLabel lblDeleteImagesAfter = new JLabel("Delete Images After Moving");
-		lblDeleteImagesAfter.setBounds(10, 247, 163, 14);
-		frame.getContentPane().add(lblDeleteImagesAfter);
-		
-		JCheckBox chckbxYes = new JCheckBox("Yes");
-		chckbxYes.setBounds(198, 242, 97, 23);
-		frame.getContentPane().add(chckbxYes);
 	}
 }

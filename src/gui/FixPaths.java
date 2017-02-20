@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import guiResources.GuiKeyListener;
+import imageIterator.GetSourceInfo;
+
 public class FixPaths {
 
 	ArrayList<String> paths;
@@ -33,6 +36,27 @@ public class FixPaths {
 				}
 			}
 		}
+	}
+
+	public void createGui(String delImagesAfterMove) {
+        GetSourceInfo sourceInfo = new GetSourceInfo();
+        //gets name of every file
+        ArrayList<String> picturesSources = new ArrayList<>();
+        picturesSources = sourceInfo.getNameOfFiles(pathsFixed.get(0).toString());
+    //GET FILES AND DESTINATIONS
+        
+        String[] pathsArray = new String[5];
+        for(int i = 0; i < pathsFixed.size(); i++){
+            pathsArray[i] = pathsFixed.get(i).toString();
+        }
+        for(int j = pathsFixed.size(); j < 5; j++){
+        	pathsArray[j] = "del";
+        }
+        
+    //PRESENTS THE GUI WITH BUTTONS AND THE IMAGES
+        GuiKeyListener guiControls = new GuiKeyListener();
+        guiControls.startGui(delImagesAfterMove, picturesSources, pathsArray, picturesSources.size());
+		
 	}
 	
 }
