@@ -33,15 +33,15 @@ public class FixPaths {
 			currentNumberInArray++;
 			currentPath = paths.get(currentNumberInArray);
 		}
+		System.out.println("NOT CREATED");
 		
 		for(int i = 0; i < pathsFixed.size(); i++){
-			if(!Files.exists(pathsFixed.get(i))){
-				try {
-					Files.createDirectories(pathsFixed.get(i));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			System.out.println("In For Loop");
+			System.out.println(pathsFixed.toString());
+			File directory = new File(pathsFixed.toString());
+	        if (!directory.exists()){
+	            directory.mkdirs();
+	        }
 		}
 	}
 
@@ -49,7 +49,7 @@ public class FixPaths {
         
         String[] pathsArray = new String[5];
         for(int i = 0; i < pathsFixed.size(); i++){
-            pathsArray[i] = pathsFixed.get(i).toString();
+            pathsArray[i] = pathsFixed.get(i).toString() + "/";
         }
         for(int j = pathsFixed.size(); j < 5; j++){
         	pathsArray[j] = "del";
@@ -63,9 +63,6 @@ public class FixPaths {
         
     //PRESENTS THE GUI WITH BUTTONS AND THE IMAGES
         GuiKeyListener guiControls = new GuiKeyListener();
-        System.out.println(picturesSources.get(0));
-        System.out.println(pathsArray[0]);
-        System.out.println(picturesSources.size());
         guiControls.startGui(delImagesAfterMove, picturesSources, pathsArray, picturesSources.size());
 		
 	}

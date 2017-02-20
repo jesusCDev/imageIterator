@@ -34,7 +34,7 @@ public class InfoSignUp {
 	private JTextField leftArrowText;
 	private JTextField rightArrowText;
 	
-	String yesOrNo;
+	String yesOrNo = "N";
 	
 	boolean upClick = true;
 	boolean downClick = false;
@@ -66,11 +66,7 @@ public class InfoSignUp {
 	}
 	
 	private void passText(String[] paths){
-		System.out.println(paths[0]);
-		System.out.println(paths[1]);
-		System.out.println(paths[2]);
-		System.out.println(paths[3]);
-		System.out.println(paths[4]);
+		
 	}
 	
 	class RadioListener implements ActionListener{

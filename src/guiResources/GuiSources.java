@@ -6,6 +6,7 @@
 package guiResources;
 
 
+import javax.print.DocFlavor.URL;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -77,9 +79,10 @@ public class GuiSources extends JFrame
      */
     private void moveToNextFile()
     {
+
     	ImageGallery.remove(0);
         curImageIndex = curImageIndex + 1;
-        
+
         if(curImageIndex != imagesInFolder)
         {
             ImageIcon nextImage = new ImageIcon(rootPath + picturesSources.get(curImageIndex));
@@ -90,7 +93,7 @@ public class GuiSources extends JFrame
         else
         {
         	this.setVisible(false);
-        	System.out.println("\n" + "Done. Have a good day. :D");
+        	 System.out.println("\n" + "Done. Have a good day. :D");
         }
     }
     
@@ -125,7 +128,7 @@ public class GuiSources extends JFrame
     	{
 			InputStream input = new FileInputStream(imagePath);
 			FileOutputStream output = new FileOutputStream(newPath);
-		
+
 		//MOVING IMAGE
 			byte[] buf = new byte[1024];
 			int bytesRead;
