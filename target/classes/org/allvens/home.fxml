@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpAll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.allvens.controller.Home">
+   <center>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+   		<children>
+            <VBox>
+               <children>
+         			<Label styleClass="subTitleTwo" text="Image Folder Path:" />
+                  <TextField fx:id="tvMainPath" />
+                  <Label styleClass="subTitleTwo" text="How many arrow keys will you be using for paths?" />
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hbContainer">
+                     <children>
+                        <RadioButton fx:id="rbUpArrow" mnemonicParsing="false" onAction="#rbTgSelected" selected="true" text="One">
+                        	<toggleGroup>
+                			  <ToggleGroup fx:id="rbTgPathNumbers" />
+               			</toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbDownArrow" mnemonicParsing="false" onAction="#rbTgSelected" text="Two" toggleGroup="$rbTgPathNumbers" />
+                        <RadioButton fx:id="rbRightArrow" mnemonicParsing="false" onAction="#rbTgSelected" text="Three" toggleGroup="$rbTgPathNumbers" />
+                        <RadioButton fx:id="rbLeftArrow" mnemonicParsing="false" onAction="#rbTgSelected" text="Four" toggleGroup="$rbTgPathNumbers" />
+                     </children>
+                  </HBox>
+                  <RadioButton fx:id="rbDeleteOrignialPictures" mnemonicParsing="false" onAction="#setDeletePicturesFromMainPath" selected="true" text="Delete Pictures From Origianl Folder After Moving" />
+               </children>
+               <styleClass>
+                  <String fx:value="vbContainer" />
+                  <String fx:value="container" />
+                  <String fx:value="background-Top" />
+               </styleClass>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+               <children>
+         		 	<HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hbContainer">
+                     <children>
+                        <Label styleClass="subTitleTwo" text="Up Arrow - Shortcut Path:" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#btn_tellUserAboutPathShortCuts" styleClass="btnHelp" text="?">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+         			<TextField fx:id="tvUpArrowPath" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                  <Label styleClass="subTitleTwo" text="Down Arrow - Shortcut Path:" />
+                  <TextField fx:id="tvDownArrowPath" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                  <Label styleClass="subTitleTwo" text="Left Arrow - Shortcut Path:" />
+                  <TextField fx:id="tvLeftArrowPath" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                  <Label styleClass="subTitleTwo" text="Right Arrow - Shortcut Path:" />
+                  <TextField fx:id="tvRightArrowPath" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+         			<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <Label fx:id="lbForgotToFillIn" alignment="CENTER" text="Please fill all avilable text fields." textFill="RED" visible="false" />
+                     </children>
+                  </HBox>
+               </children>
+               <styleClass>
+                  <String fx:value="vbContainer" />
+                  <String fx:value="container" />
+               </styleClass>
+            </VBox>
+   		</children>
+        <BorderPane.margin>
+        	<Insets />
+        </BorderPane.margin>
+         <styleClass>
+            <String fx:value="body" />
+            <String fx:value="vbContainer" />
+         </styleClass>
+   	</VBox>
+   </center>
+   <top>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="mainTitle" text="Image Organizer">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="header" />
+            <String fx:value="background-Top" />
+         </styleClass>
+      </VBox>
+   </top>
+   <bottom>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnSubmit" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btn_checkAndSubmitPaths" styleClass="homeBtn" text="Submit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

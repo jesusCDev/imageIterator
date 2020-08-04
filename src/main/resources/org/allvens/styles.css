@@ -1,0 +1,142 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root{
+    -fx-font-family: "Georgia, serif";
+    -fx-focused-color: transparent;
+}
+.button{
+    -fx-cursor: hand;
+}
+/*******************************************
+// BACKGROUND
+ // -fx-background-color: linear-gradient(to top right, #F76963, #FFCFAC);
+********************************************/
+.background{
+    -fx-background-color: #363847;
+}
+
+.background-Top{
+    -fx-background-color: white;
+}
+/*******************************************
+// LABELS
+********************************************/
+
+.mainTitle{
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+.subTitleOne{
+
+}
+.subTitleTwo{
+    -fx-font-weight: bold;
+    -fx-text-fill: #F04A38;
+}
+.normalText{
+   -fx-text-fill: white;
+}
+.header .label{
+    -fx-text-fill: black;
+}
+/*******************************************
+// COMPONENTS
+********************************************/
+/*********** TEXT FIELD ***********/
+.text-field{
+	-fx-background-color: rgba(0, 0, 0, 0.2);
+	-fx-border-color: transparent;
+	-fx-text-fill: white;
+	-fx-prompt-text-fill: #C5CDD7;
+}
+.text-field:focused{
+
+}
+
+/*********** BUTTONS ***********/
+.button{
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-radius: 0px;
+	-fx-background-radius: 0px;
+    -fx-background-color: #3E4658;
+}
+.homeBtn{
+    -fx-font-size: 1.3em;
+}
+.button:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #363847;
+}
+
+.btnHelp{
+    -fx-font-size: 0.9em;
+    -fx-padding: 5px;
+    -fx-margin: 0px;
+	-fx-border-radius: 100px;
+	-fx-background-radius: 100px;
+}
+.btnHelp:hover{
+    -fx-font-size: 0.9em;
+	-fx-background-radius: 20px;
+}
+
+/**************************
+// RADIO BUTTON
+***************************/
+.radio-button: hover{
+    -fx-text-fill: #F04A38;
+    -fx-cursor: hand;
+}
+.radio-button .radio{
+    -fx-border-width: 0.1em;
+    -fx-border-color: #363847;
+    -fx-background-color: transparent ;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+}
+.radio-button .radio:selected{
+    -fx-background-color : transparent ;
+    -fx-background-image : null  ;
+}
+.radio-button:selected .dot {
+  -fx-mark-color: #F04A38;
+}
+/**************************
+// Toast
+***************************/
+.toast .label{
+ -fx-text-fill: white;
+}
+.installer_header .label{
+    -fx-text-fill: white;
+    -fx-font-size: 1.8em;
+}
+.label_onBackground {
+    -fx-text-fill: white;
+}
+/**************************
+// Containers
+***************************/
+.vbContainer{
+    -fx-spacing: 1em;
+}
+.hbContainer{
+    -fx-spacing: 1em;
+}
+.container{
+    -fx-padding: 1em;
+}
+/**************************
+// OTHERS
+***************************/
+.header .label{
+    -fx-text-fil: #40505A;
+}
+
+#tvMainPath{
+    -fx-text-fill: black;
+}
+
+#lv_FilesAndDirectories{
+    -fx-background-color: transparent;
+}
